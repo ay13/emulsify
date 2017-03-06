@@ -4,6 +4,9 @@ global:
       dist/style.css: {}
   js:
     dist/scripts.js: {}
+    dist/vue/js/manifest.js: {}
+    dist/vue/js/vendor.js: {}
+    dist/vue/js/app.js: {}
 
 # Examples of Library syntax
 # typekit:

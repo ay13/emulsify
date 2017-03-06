@@ -1,0 +1,37 @@
+diff --git a/emulsify.libraries.yml b/emulsify.libraries.yml
+index a645c83..479d0e2 100644
+--- a/emulsify.libraries.yml
++++ b/emulsify.libraries.yml
+@@ -4,6 +4,9 @@ global:
+       dist/style.css: {}
+   js:
+     dist/scripts.js: {}
++    dist/vue/js/manifest.js: {}
++    dist/vue/js/vendor.js: {}
++    dist/vue/js/app.js: {}
+ 
+ # Examples of Library syntax
+ # typekit:
+diff --git a/package.json b/package.json
+index 51ecdfa..46ba055 100644
+--- a/package.json
++++ b/package.json
+@@ -3,10 +3,17 @@
+   "description": "Project template for Drupal 8 themes",
+   "version": "1.0.0",
+   "devDependencies": {
+-    "emulsify-gulp": "fourkitchens/emulsify-gulp"
++    "emulsify-gulp": "fourkitchens/emulsify-gulp",
++    "gulp": "^3.9.1"
+   },
+   "scripts": {
+     "start": "gulp clean && gulp compile && gulp theme",
++    "compile:pl": "gulp compile",
++    "build:theme": "gulp build",
++    "build:vue": "(cd vue/ && npm run build)",
++    "setup": "yarn && (cd vue && yarn)",
++    "build:all": "npm run compile:pl && npm run build:theme && npm run build:vue",
++    "ci:complete": "npm run setup && npm run build:all",
+     "postinstall": "rm -rf pattern-lab && composer create-project -n pattern-lab/edition-twig-standard pattern-lab && rm -rf pattern-lab/source && ln -s ../components pattern-lab/source"
+   }
+ }

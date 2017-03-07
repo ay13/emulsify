@@ -7,12 +7,12 @@
     "gulp": "^3.9.1"
   },
   "scripts": {
-    "start": "gulp clean && gulp compile && gulp theme",
-    "compile:pl": "gulp compile",
-    "build:theme": "gulp build",
-    "build:vue": "(cd vue/ && npm run build)",
+    "theme:watch": "gulp clean && gulp compile && gulp theme",
+    "theme:build": "gulp build",
+    "pl:build": "gulp compile",
+    "vue:build": "(cd vue/ && npm run build)",
     "setup": "yarn && (cd vue && yarn)",
-    "build:all": "npm run compile:pl && npm run build:theme && npm run build:vue",
+    "build:all": "npm run theme:build && npm run pl:build && npm run vue:build",
     "ci:complete": "npm run setup && npm run build:all",
     "postinstall": "rm -rf pattern-lab && composer create-project -n pattern-lab/edition-twig-standard pattern-lab && rm -rf pattern-lab/source && ln -s ../components pattern-lab/source"
   }
